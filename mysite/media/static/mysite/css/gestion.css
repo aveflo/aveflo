@@ -1,0 +1,88 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+nav {
+    font-size: 1.4em;
+    background-color:rgb(241, 241, 241);
+    padding: 10px;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    box-sizing: content-box;
+    top: 0;
+    left: 0;
+}
+
+nav .title {
+    width: 35%;
+    display: inline-block;
+    position: relative;
+    color: royalblue;
+    left: 5%;
+    text-decoration: none;
+}
+
+nav ul {
+    width: 50%;
+    text-align: right;
+    display: inline-block;
+    position: relative;
+    right: 5%;
+}
+
+nav li {
+    display: inline-block;
+}
+
+nav .items {
+    text-decoration: none;
+    color: black;
+}
+
+.welcome {
+    text-align: center;
+}
+
+.welcome img {
+    display: inline-block;
+    max-width: 45%;
+}
+
+.message h2 {
+    font-size: 28px;
+    text-align: center;
+}
+.message {
+    text-align: center;
+}
+
+form input {
+    margin:20px 0;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 28px;
+    border: 4px solid rgb(241, 241, 241);
+}
+
+form input.mailbox:valid {
+    border: 4px dashed #2bff00;
+    outline: none;
+} 
+
+footer {
+    font-size: 1em;
+    text-align: center;
+    padding: 10px;
+    color:black;
+}
+
+.imalink:hover {
+    position: relative;
+    top: 10px;
+}
+
+.miniatura {
+    position: relative;
+    background-color: rgb(241, 241, 241);
+    text-align: center;
+}

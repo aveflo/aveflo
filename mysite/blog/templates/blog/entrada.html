@@ -1,0 +1,49 @@
+{% extends "mysite/base.html" %}
+{% load static %}
+{% block content %}
+<p style="text-align: left;padding-left:20%;padding-top:5%;"> · <a href="/blog" style="color: royalblue;">Regresar al blog</a> ·</p>
+
+<section style="text-align: center;">
+
+<div style="padding-left: 10%;
+padding-right: 10%;">
+
+<div>
+<h1 style="padding-left: 20%;font-size: 3em;max-width: 60%;">{{entrada.titulo}}</h1>
+<p style="font-size: 1.2em;text-align: right;
+padding-left: 20%;
+padding-right: 20%;">Escrito por: <a href="auth/{{autor.id}}">{{autor.nombre}}</a><br>{{entrada.creado}}</p>
+<p style="font-size: 1.6em;"><i>{{entrada.resumen}}</i></p>
+<img src="{{entrada.imagen.url}}" style="max-width: 40%;">
+</div>
+<div style="font-size: 1.7em;
+text-align: justify;
+padding-left: 10%;
+padding-right: 10%;">
+{{entrada.get_markdown|safe}}
+</div>
+</section>
+
+<section style="padding-right: 15%;text-align: right;">
+    <h2 style="padding-left:15%;text-align: left;">
+        Deja tus comentarios:
+    </h2>
+
+    <form stytle="padding-right:30%;text-align:right" action="" method="POST"> {% csrf_token %}
+        <input style="width:30%;" type="text" name="nombre" placeholder="tu nombre" required><br>
+        <input style="width:60%;" type="text" name="comentario" placeholder="tu opinión" required>
+        <input type="submit" value="Comentar">
+    </form>
+    
+</section>
+
+<section style="padding-left: 15%;text-align: center;">
+{% for com in comment %}
+<div style="max-width: 80%;">
+<h3  style="text-align: left;">{{com.nombre}}:</h3>
+<p style="padding:2%;text-align: right;border-radius:5%;
+border: 5px solid royalblue;">{{com.contenido}}</p>
+</div>
+{% endfor %}
+</section>
+{% endblock %}

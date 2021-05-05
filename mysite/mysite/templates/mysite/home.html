@@ -1,0 +1,32 @@
+{% extends "mysite/base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="message">
+    <h2 style="padding-top: 3%;">
+        ¡Bienvenid@ a la comunidad de ciencia de datos en español!
+    </h2>
+    <h3>
+        checa los productos en la tienda y regístrate para recibir nuestras noticias en tu correo
+    </h3>
+    <div class="welcome">
+        <a href="{% url 'blog' %}"><img class="imalink" src="{% static 'mysite\img\imagenprincipal2.jpg' %}"></a>
+        <a href="{% url 'tienda' %}"><img class="imalink" src="{% static 'mysite\img\imagenprincipal3.jpg' %}"></a>
+    </div>
+</section>
+
+<section class="message">
+<h3>
+    ¡Suscríbete! 
+</h3>
+<p>
+    (solo necesitas un correo)
+    <form action="" method="POST">
+        <input type="text" name="name" placeholder="tu nombre">{% csrf_token %}
+        <input class="mailbox" type="email" name="email" placeholder="tu correo" required><br>
+        <input type="submit" value="Unirme" >
+    </form>
+</p>
+</section>
+
+{% endblock %}

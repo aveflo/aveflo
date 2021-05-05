@@ -1,0 +1,37 @@
+{% extends "mysite/base.html" %}
+{% load static %}
+{% block content %}
+<h2 style="padding-top:3%;text-align: center;"> · {{categoria.nombre}} · </h2>
+<p style="text-align: center;"> · <a href="/blog" style="color: royalblue;">ver todas</a> ·</p>
+{% for entrada in post %}
+<div style="background-color: rgb(241, 241, 241);
+ position: unset; 
+ max-width:25%;
+text-align: center;
+margin-left: 5%;
+margin-top: 3%;
+display: inline-block;
+top: 0%;
+">
+    <h2>
+        <a href="{{entrada.id}}"
+        style="color:royalblue;
+        text-decoration: none;">{{entrada.titulo}}</a>
+    </h2>
+    <img src="{{entrada.imagen.url}}" style="max-width: 80%;">
+    <p style="padding-right:15%;font-size: 0.8em;
+    text-align: right;">Autor: {{entrada.autor.nombre}}</p>
+    <p style="max-width: 80%;
+    text-align: right;">
+        <i>{{entrada.resumen}}</i>
+    </p>
+    <p style="font-size: 0.8em;">· 
+    {% for cat in entrada.categoria.all %}
+    {{cat.nombre}} ·
+    {% endfor %}
+    </p>
+</div>
+{% endfor %}
+
+
+{% endblock %}

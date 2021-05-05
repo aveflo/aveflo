@@ -1,0 +1,29 @@
+{% extends "mysite/base.html" %}
+{% load static %}
+{% block content %}
+<p style="text-align: left;padding-left:20%;padding-top:5%;"> · <a href="/blog" style="color: royalblue;">Regresar al blog</a> ·</p>
+
+<section style="text-align: center;">
+
+<div style="padding-left: 10%;
+padding-right: 10%;">
+
+<div>
+<img src="{{autor.photo.url}}" 
+style="max-width: 30%;
+border-radius: 50%;
+border: 5px solid royalblue;
+display: inline-block;
+">
+<h1 style="padding-left: 5%;
+font-size: 3em;
+max-width: 60%;
+text-align: center;
+display: inline-block;">
+{{autor.nombre}}
+</h1>
+<p style="font-size: 1.6em;"><i>{{autor.bio}}</i></p>
+</div>
+</section>
+
+{% endblock %}
