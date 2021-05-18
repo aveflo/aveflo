@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-w@u1v56+r%u60k6)tq0*vi2uqj&&teh2!bars4p#79++%3+*jw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'blog',
     'tienda',
     'mysite',
+    'carrito',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +69,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'carrito.context_processor.importe_total_carro',
+                'carrito.context_processor.costo_de_envio',
+                'carrito.context_processor.costo_total',
             ],
         },
     },

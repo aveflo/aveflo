@@ -1,8 +1,45 @@
 {% extends "mysite/base.html" %}
 {% load static %}
-
 {% block content %}
-<div style="text-align: center;">
-<img src="{% static 'mysite\img\underconstruction.jpg' %}">
+<div style="padding-top:3%">
+    <p style="text-align:left;
+    color: white;
+    background-color: forestgreen;
+    padding: 10px;
+    padding-left: 1%;
+    width: 85%;
+    margin-left: 20%;
+    border-radius: 36px;"> Total: ${{importe_total_carro}} mxn &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a style="padding-left: 2%;padding-right: 2%;background-color: white;border-radius: 30px;color: black;text-decoration: none;" href="/carrito">Ver carrito</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a style="padding-left: 2%;padding-right: 2%;background-color: white;border-radius: 30px;color: black;text-decoration: none;" href="/carrito/pagar">Pagar</a>  <span style="float: right; padding-right:25%"><a style="padding-left: 15px;padding-right: 15px;padding-top:3px;padding-bottom: 3px;background-color: red;border-radius: 30px;color: white;text-decoration: none;" href="/carrito/vaciar_carrito">Vaciar</a>  </p>
 </div>
+
+<h3 style="padding-top:1%;text-align: center;">Categroías:</h3>
+<p style="text-align: center;"> · <a href="/tienda" style="color: royalblue;">todas</a> · 
+{% for cat in categoria %}
+<a href="{{cat.id}}" style="color: royalblue;">{{cat.nombre}}</a> ·
+{% endfor %}
+</p>
+<h2 style="padding-top:3%;text-align: center;">Productos:</h2>
+
+{% for prod in producto %}
+<div style="background-color: rgb(241, 241, 241);
+ position: unset; 
+width:240px;
+text-align: center;
+margin-left: 5%;
+margin-top: 3%;
+display: inline-block;
+top: 0%;
+">
+    <img src="{{prod.imagen.url}}" style="padding-top:5%;width:200px;height:200px;">
+    <h1 style="padding-right:15%;font-size: 1em;
+    text-align: right;">{{prod.nombre}}</h1>
+    <p style="text-align: right;padding-right:15%;">${{prod.precio}} mxn</p>
+    <div style="padding-bottom: 5%;">
+        <a style="padding-left: 15px;padding-right: 15px;padding-top:3px;padding-bottom: 3px;background-color: forestgreen;border-radius: 30px;color: white;text-decoration: none;" href="/carrito/{{prod.id}}"> Agregar al carrito </a>
+    </div>
+</div>
+{% endfor %}
+
 {% endblock %}
+
+

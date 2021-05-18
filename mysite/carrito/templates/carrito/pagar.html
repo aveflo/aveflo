@@ -1,0 +1,32 @@
+{% extends "mysite/base.html" %}
+{% load static %}
+{% block content %}
+<h2 style="padding-top:3%;text-align: center;">¡Muchas gracias por comprar!:</h2>
+
+<div style="padding-top:1%">
+    <h3 style="padding-top:0%;text-align: center;">Monto del pedido:</h3>
+    <p style="text-align: center;">
+        ${{importe_total_carro}} mxn<br>
+    </p>
+
+    <p style="text-align: center;font-size: 0.8em;">
+        Envíos a la Ciudad de México: $50.00 (gratis a partir de $300.00)<br>
+        Envíos a México: $200 (gratis a partir de $600.00)
+    </p>
+</div>    
+
+<div style="padding-top:1%">
+<h3 style="padding-top:0%;text-align: center;">Datos de la compra:</h3>
+        <form style="text-align: center;" action="datos" method="POST">{% csrf_token %}
+            
+        <p style="text-align: center;">
+            Introduce tu correo:<br>
+            <input class="mailbox" type="email" name="email" placeholder="correo" required>
+            <input type="submit" value="Verificar datos" >
+        </p>
+
+        </form>
+
+</div>
+</section>
+{% endblock %}

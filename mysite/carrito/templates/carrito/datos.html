@@ -1,0 +1,50 @@
+{% extends "mysite/base.html" %}
+{% load static %}
+{% block content %}
+<h2 style="padding-top:3%;text-align: center;">¡Muchas gracias por comprar!:</h2>
+
+<div style="padding-top:1%">
+    <h3 style="padding-top:0%;text-align: center;">Monto del pedido:</h3>
+    <p style="text-align: center;">
+        ${{importe_total_carro}} mxn<br>
+    </p>
+
+    <p style="text-align: center;font-size: 0.8em;">
+        Envíos a la Ciudad de México: $50.00 (gratis a partir de $300.00)<br>
+        Envíos a México: $200 (gratis a partir de $600.00)
+    </p>
+</div>    
+
+<div style="padding-top:1%">
+<h3 style="padding-top:3%;text-align: center;">Datos de la compra:</h3>
+        <form style="text-align: center;" action="resumentotal" method="POST">{% csrf_token %}
+            
+        <p style="text-align: center;">
+            <input type="text" name="observaciones" placeholder="observaciones del pedido"><br>
+            Cliente:<br>
+            <input type="text" name="nombre" placeholder="nombre" required>
+            <input type="text" name="nombre2" placeholder="segundo nombre"><br>
+            <input type="text" name="apellido1" placeholder="apellido paterno" required> 
+            <input type="text" name="apellido2" placeholder="apellido materno"><br>
+            <input class="mailbox" type="email" name="email" placeholder="correo" required>
+            <input type="text" name="telefono" placeholder="telefono de contacto" required><br>
+        </p>
+
+        <p style="text-align: center;">
+            Dirección de entrega: <br>
+            <input type="text" name="pais" placeholder="pais">
+            <input type="text" name="region" placeholder="región"><br>
+            <input type="text" name="ciudad" placeholder="ciudad" required>
+            <input type="text" name="municipio" placeholder="municipio/colonia" required><br>
+            <input type="text" name="CP" placeholder="CP" required>
+            <input type="text" name="calle" placeholder="calle" required><br>
+            <input type="text" name="numero" placeholder="número ext - int" required>
+            <input type="text" name="referencias" placeholder="referencias">
+            <input type="submit" value="Confirmar datos" >
+        </p>
+
+        </form>
+
+</div>
+</section>
+{% endblock %}

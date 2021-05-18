@@ -1,0 +1,36 @@
+{% extends "mysite/base.html" %}
+{% load static %}
+{% block content %}
+<h2 style="padding-top:3%;text-align: center;">Tu carrito:</h2>
+
+<section style="padding-left: 15%;text-align: right;">
+    {% for com in carro %}
+    <div style="max-width: 80%;">
+    <p style="padding-top:2%;
+    padding-right: 5%;
+    padding-left: 2%;
+    padding-bottom: 1%;
+    text-align: rights;
+    border-radius:0%;
+    border: 2px solid black;">
+    <img src="{{com.imagen}}" style="width: 150px;
+    height: 150px;
+    float: left;"><br><b>{{com.nombre}}</b><br><br>Cantidad: {{com.cantidad}}<br>Precio unitario: ${{com.precio}}<br>
+    <a href="agregar/{{com.producto_id}}">Agregar uno</a>
+    <a href="dejar/{{com.producto_id}}">Dejar uno</a>
+    <a href="eliminar/{{com.producto_id}}">Dejar todos</a>
+    <br>
+    <br>
+    </p>
+    </div>
+    {% endfor %}
+    </section>
+<section>
+
+<div style="padding-top:1%">
+    <p style="text-align:center;color: black;"><a href="vaciar_carrito">Vaciar carrito</a></p>
+    <p style="text-align:center;color: black;font-size: larger;">Total: ${{importe_total_carro}} mxn</p>
+    <p style="text-align:center;color: black;"><a href="/carrito/pagar">Pagar</a></p>
+</div>
+</section>
+{% endblock %}

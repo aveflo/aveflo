@@ -1,0 +1,106 @@
+{% extends "mysite/base.html" %}
+{% load static %}
+{% block content %}
+<h2 style="padding-top:3%;text-align: center;">Tu pedido:</h2>
+
+<section style="padding-left: 15%;
+text-align: right;">
+    {% for com in carro %}
+    <div style="max-width: 80%;">
+    <p style="padding-top:2%;
+    padding-right: 5%;
+    padding-left: 2%;
+    padding-bottom: 1%;
+    text-align: left;">
+    <b>{{com.nombre}}:</b> <span style="float: right;">{{com.cantidad}} pieza(s) |   Precio unitario: ${{com.precio}}</span><br>
+    </p>
+    </div>
+    {% endfor %}
+
+        <div style="max-width: 80%;">
+        <p style="padding-top:2%;
+        padding-right: 5%;
+        padding-left: 2%;
+        padding-bottom: 1%;
+        text-align: left;">
+        <b>Observaciones del pedido:</b> <span style="float: right;max-width: 50%;">{{observaciones}}</span><br>
+        </p>
+        </div>
+    
+    <div style="max-width: 80%;">
+        <p style="padding-top:2%;
+        padding-right: 5%;
+        padding-left: 2%;
+        padding-bottom: 1%;
+        text-align: left;">
+    Entregar a: 
+        <span style="float: right;">
+            <b>{{nombre}} {{apellido1}}</b><br><br>
+            {{calle}} {{numero}}<br>
+            {{municipio}}, {{CP}}<br>
+            {{ciudad}}, {{region}}<br>
+            {{pais}}<br><br>
+            <b>{{telefono}}</b><br>
+            {{correo}}<br><br>
+            ${{importe_total_carro}}<br>
+            ${{costo_de_envio}}<br><!--envio-->
+            ${{costo_total}}<!--importe total-->
+            <br>
+            <br>
+            {{referencias}}
+        </span>
+        <br><br>
+        En:
+        <br><br>
+        <br><br>
+        <br>
+        Contacto:
+        <br>
+        <br>
+        <br>
+        Importe:<br>
+        Envío:<br>
+        Importe total:<br>
+        <br>
+        Referencias
+        </p>
+        </div>
+
+    </section>
+
+<section style="text-align: center;">
+    <h2>Pagar</h2>
+    <!-- Set up a container element for the button -->
+    <div id="paypal-button-container"></div>
+
+    <!-- Include the PayPal JavaScript SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
+
+    <script>
+        // Render the PayPal button into #paypal-button-container
+        paypal.Buttons({
+
+            // Set up the transaction
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '88.44'
+                        }
+                    }]
+                });
+            },
+
+            // Finalize the transaction
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    // Show a success message to the buyer
+                    alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                });
+            }
+
+
+        }).render('#paypal-button-container');
+    </script>
+</section>
+{% endblock %}
