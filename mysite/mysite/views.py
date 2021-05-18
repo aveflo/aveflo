@@ -17,7 +17,7 @@ def home(request):
 
             emailhost = settings.EMAIL_HOST_USER
 
-            asunto = 'Bienvenido a tu DataScience'
+            asunto = 'Bienvenido a tu Dead Coders Society'
             mensaje = 'Gracias por tu interés en la comunidad.\nEste correo tiene la unica finalidad de confirmar tu suscripción a nuestro blog.'
 
             send_mail(asunto, mensaje, emailhost, [email])
